@@ -1,0 +1,4 @@
+ID: 0; Znamka: Man, Model: Tgx-d38, Prevoženi km: 350000, Zadnji servis: 28.01.2019
+ID: 1; Znamka: Renault, Model: Megane 3, Prevoženi km: 215000, Zadnji servis: 04.12.2018
+ID: 2; Znamka: BMW, Model: 318, Prevoženi km: 151000, Zadnji servis: 01.07.2018
+ID: 3; Znamka: Mercedes-Benz, Model: SLK, Prevoženi km: 98000, Zadnji servis: 11.10.2001
