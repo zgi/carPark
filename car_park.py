@@ -21,32 +21,28 @@ vozila_list = [v0, v1, v2]
 def izpis_vozil():
     for index, v in enumerate(vozila_list):
         print "ID: %d; %s" % (index, v.izpis_vozil())
+    print ""
+
 
 def vpis_km():
-    znamka = raw_input("Vpiši znamko vozila: ").title()
-    model = raw_input("Vpiši model vozila: ").title()
-    for index, v in enumerate(vozila_list):
-        if znamka in v.izpis_vozil():
-            if model in v.izpis_vozil():
-                print "ID: %d; %s" % (index, v.izpis_vozil())
-                novi_km = int(raw_input("Vpiši št. km: "))
-                izbrano_vozilo = vozila_list[int(index)]
-                izbrano_vozilo.km = novi_km
-                zapis_v_dnevnik()
-                print "Zapis posodobljen\n"
+    izpis_vozil()
+    index = raw_input("Vpiši ID vozila za vpis: ")
+    novi_km = int(raw_input("Vpiši št. km: "))
+    izbrano_vozilo = vozila_list[int(index)]
+    izbrano_vozilo.km = novi_km
+    zapis_v_dnevnik()
+    print "Zapis posodobljen\n"
+
 
 def vpis_servis():
-    znamka = raw_input("Vpiši znamko vozila: ").title()
-    model = raw_input("Vpiši model vozila: ").title()
-    for index, v in enumerate(vozila_list):
-        if znamka in v.izpis_vozil():
-            if model in v.izpis_vozil():
-                print "ID: %d; %s" % (index, v.izpis_vozil())
-                servis = raw_input("Vpiši datum zadnjega servisa: ")
-                izbrano_vozilo = vozila_list[int(index)]
-                izbrano_vozilo.servis_datum = servis
-                zapis_v_dnevnik()
-                print "Zapis posodobljen\n"
+    izpis_vozil()
+    index = raw_input("Vpiši ID vozila za vpis: ")
+    servis = raw_input("Vpiši datum zadnjega servisa: ")
+    izbrano_vozilo = vozila_list[int(index)]
+    izbrano_vozilo.servis_datum = servis
+    zapis_v_dnevnik()
+    print "Zapis posodobljen\n"
+
 
 def vpis_novega_vozila():
     znamka = raw_input("Vpiši znamko vozila: ")
@@ -58,19 +54,22 @@ def vpis_novega_vozila():
     zapis_v_dnevnik()
     print "Zapis posodobljen\n"
 
+
 def izbris_vozila():
-    for index, v in enumerate(vozila_list):
-        print "ID: %d; %s" % (index, v.izpis_vozil())
+    izpis_vozil()
     index = raw_input("Vpiši ID vozila za izbris: ")
     izbrano_vozilo = vozila_list[int(index)]
     vozila_list.remove(izbrano_vozilo)
     zapis_v_dnevnik()
     print "Zapis posodobljen\n"
 
+
 def zapis_v_dnevnik():
     with open('vozila.txt', 'w') as dnevnik:
         for index, v in enumerate(vozila_list):
             dnevnik.write("ID: %d; %s\n" % (index, v.izpis_vozil()))
+
+
 def main():
     run = True
     while run:
@@ -81,26 +80,27 @@ def main():
         print "e) Izbris vozila"
         print "f) Izhod"
 
-        izbirnik = raw_input("Vpiši željeno izbiro: (a, b, c, d, e, f)")
+        izbirnik = raw_input("Vpiši željeno izbiro: (a, b, c, d, e, f)").lower()
 
-        if izbirnik.lower() == 'a':
+        if izbirnik == 'a':
             print "Izpis vseh vozil\n"
             izpis_vozil()
-        elif izbirnik.lower() == 'b':
+        elif izbirnik == 'b':
             print "Vpis stanja km za vozilo\n"
             vpis_km()
-        elif izbirnik.lower() == 'c':
+        elif izbirnik == 'c':
             print "Vpis zadnjega servisa za vozilo\n"
             vpis_servis()
-        elif izbirnik.lower() == 'd':
+        elif izbirnik == 'd':
             print "Vpis novega vozila\n"
             vpis_novega_vozila()
-        elif izbirnik.lower() == 'e':
+        elif izbirnik == 'e':
             print "Izbris vozila\n"
             izbris_vozila()
-        elif izbirnik.lower() == "f":
+        elif izbirnik == "f":
             print "Hvala lepa, Lep pozdrav!\n"
             run = False
+
 
 if __name__ == '__main__':
     main()
